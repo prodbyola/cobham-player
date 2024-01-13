@@ -1,0 +1,12 @@
+@font-face {
+    font-family: 'Disruptors Script';
+    src: url('DisruptorsScript-Regular.eot');
+    src: local('Disruptors Script Regular'), local('DisruptorsScript-Regular'),
+        url('DisruptorsScript-Regular.eot?#iefix') format('embedded-opentype'),
+        url('DisruptorsScript-Regular.woff2') format('woff2'),
+        url('DisruptorsScript-Regular.woff') format('woff'),
+        url('DisruptorsScript-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
