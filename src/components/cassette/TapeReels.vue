@@ -1,10 +1,10 @@
 <template>
     <div class="csp_plaster csp_reels">
         <div class="csp__reel reel__rolled">
-            <img src="/images/reel.png" />
+            <ReelIcon />
         </div>
         <div class="csp__reel">
-            <img src="/images/reel.png" />
+            <ReelIcon />
         </div>
     </div>
     <div class="csp_plaster csp_reels_holes">
@@ -18,6 +18,9 @@
         </div>
     </div>
 </template>
+<script lang="ts" setup>
+import ReelIcon from './ReelIcon.vue';
+</script>
 <style lang="scss" scoped>
 .csp_plaster {
     position: absolute;
