@@ -1,10 +1,6 @@
 <template>
-  <main>
-    <div class="cs-player-page csp_page_bg">
-      <div class="csp-cassette">
-        <Cassette />
-      </div>
-    </div>
+  <main class="cs-player-page">
+    <Cassette />
   </main>
 </template>
 
@@ -28,5 +24,13 @@ import Cassette from './components/cassette/CassetteIndex.vue';
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+#app {
+  @extend .csp_page_bg;
+  min-width: 100vw;
+  max-width: none;
+  min-height: 100vh;
+  padding: 0;
 }
 </style>

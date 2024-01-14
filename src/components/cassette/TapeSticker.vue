@@ -6,7 +6,7 @@
                 <p class="sidea__text">A</p>
             </div>
             <p class="csp__sticker_acst_text">acoustic cassette</p>
-            <p class="csp__scripted">muffana</p>
+            <p class="csp__scripted">dududaa</p>
             <p class="csp__sticker_text">N.R.[ ] IN OUT</p>
         </div>
         <div class="csp__sticker_redtape"></div>
@@ -14,6 +14,7 @@
 </template>
 <style lang="scss" scoped>
 .csp__sticker {
+    position: relative;
     .csp__sticker_redtape {
         height: 12px;
         background-color: #DD2828;
