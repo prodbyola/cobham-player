@@ -1,11 +1,13 @@
 <template>
   <main class="cs-player-page">
     <Cassette />
+    <PlaybackControls />
   </main>
 </template>
 
 <script setup lang="ts">
 import Cassette from './components/cassette/CassetteIndex.vue';
+import PlaybackControls from './components/controls/PlaybackControls.vue'
 </script>
 
 <style lang="scss">
@@ -24,6 +26,8 @@ import Cassette from './components/cassette/CassetteIndex.vue';
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
+  flex-direction: column;
 }
 
 #app {
