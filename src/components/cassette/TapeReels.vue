@@ -22,25 +22,35 @@ import { computed, ref, watchEffect } from 'vue';
 
 const appState = useAppState()
 const isPlaying = computed(() => appState.isPlaying)
+// const speedyType = computed(() => appState.speedyType)
 
 const reelRotation = ref(0)
 const rotateReel = () => {
-  if(reelRotation.value < 360){
-    reelRotation.value += 1
+  const rot = reelRotation.value
+  if(rot < 360 || rot > 0){
+
+    if(appState.speedyType === 'rewind') reelRotation.value -= 1
+    else reelRotation.value += 1
+
   } else {
     reelRotation.value = 0
   }
 }
 
 const reelProgress = computed(() => appState.reelProgress)
-
 const interval = ref<undefined | number>(undefined)
 
 watchEffect(() => {
-  if(isPlaying.value){
-    interval.value = setInterval(rotateReel, 20)
+  clearInterval(interval.value)
+
+  if(isPlaying.value || appState.speedyMode){
+    interval.value = setInterval(rotateReel, appState.speedyMode ? 1 : 20)
   } else {
     clearInterval(interval.value)
+  }
+
+  if(appState.playbackState === 'stopped'){
+    reelRotation.value = 0
   }
 })
 </script>

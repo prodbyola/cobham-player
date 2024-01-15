@@ -11,8 +11,8 @@
         active: control.name === activeControl || playPressed(control.name)
       }"
       @click="control.action"
-      @mousedown="activeControl = control.name"
-      @mouseup="deactivateControl"
+      @mousedown="() => onHoldControl(control.name)"
+      @mouseup="onReleaseControl"
     >
       <ControlIcon :name="control.name" />
     </div>
@@ -24,25 +24,43 @@ import ControlIcon from './ControlIcon.vue'
 import { computed, ref } from 'vue'
 
 const CONTROL_NAMES = ['eject', 'record', 'rewind', 'forward', 'stop', 'pause', 'play'] as const
-type ControlName = typeof CONTROL_NAMES[number]
+type ControlName = (typeof CONTROL_NAMES)[number]
 
 const appState = useAppState()
 const activeControl = ref<ControlName | null>(null)
 const playPressed = computed(() => (control: ControlName) => {
-  return ['play', 'pause'].includes(control as string) && appState.isPlaying
+  return ['play', 'pause'].includes(control as string) && appState.isPlaying && !appState.speedyMode
 })
-const deactivateControl = () => {
+
+const onHoldControl = (controlName: ControlName) => {
+  if (controlName === 'forward') {
+    appState.forward()
+  } else if(controlName === 'rewind'){
+    appState.rewind()
+  }
+
+  activeControl.value = controlName
+}
+
+const onReleaseControl = () => {
   const excluded = ['play', 'pause', 'record'].includes(activeControl.value as string)
 
-  if(!excluded){
+  const speedy = ['forward', 'rewind'].includes(activeControl.value as string)
+  if (speedy) {
+    appState.restoreSpeed()
+  }
+
+  if (!excluded) {
     activeControl.value = null
   }
 }
 
-const controls = computed<{
-    name: ControlName;
-    action: () => void;
-}[]>(() => {
+const controls = computed<
+  {
+    name: ControlName
+    action: () => void
+  }[]
+>(() => {
   return [
     { name: 'eject', action: () => {} },
     { name: 'record', action: () => {} },
