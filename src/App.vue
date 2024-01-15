@@ -1,11 +1,13 @@
 <template>
   <main class="cs-player-page">
+    <AppHeader />
     <Cassette />
     <PlaybackControls />
   </main>
 </template>
 
 <script setup lang="ts">
+import AppHeader from './components/AppHeader.vue';
 import Cassette from './components/cassette/CassetteIndex.vue';
 import PlaybackControls from './components/controls/PlaybackControls.vue'
 </script>

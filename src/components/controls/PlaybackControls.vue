@@ -31,6 +31,7 @@ $end_curve: 30px;
   width: 100%;
   display: flex;
   justify-content: center;
+  column-gap: 2px;
   margin-top: 34px;
 
   .csp_control {
@@ -38,7 +39,7 @@ $end_curve: 30px;
     align-items: center;
     justify-content: center;
     background: white;
-    border-left: 1px solid black;
+    box-shadow: 0px 5px 6px rgba(29, 80, 65, 0.50);
     padding: 4px 8px;
     cursor: pointer;
     transition: all .3s;
@@ -46,7 +47,7 @@ $end_curve: 30px;
 
   .csp_control:hover {
     transform: scale(105%);
-    border-right: 1px solid black;
+    // border-right: 1px solid black;
   }
 
   .csp_control.rightmost {
