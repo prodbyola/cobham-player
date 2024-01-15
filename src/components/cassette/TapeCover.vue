@@ -11,7 +11,16 @@
     </div>
     <div class="csp_tape_cover tc_vertical__patch tc_right">
     </div>
+    <div class="csp_tape__ear tape_ear__left">
+        <TapeEar />
+    </div>
+    <div class="csp_tape__ear tape_ear__right">
+        <TapeEar />
+    </div>
 </template>
+<script lang="ts" setup>
+import TapeEar from './TapeEar.vue';
+</script>
 <style lang="scss" scoped>
 .csp_tape_cover {
     position: absolute;
@@ -60,5 +69,19 @@
 
 .tc_bottom {
     bottom: 0;
+}
+
+.csp_tape__ear {
+    position: absolute;
+    top: 220px;
+}
+
+.tape_ear__left {
+    left: -4px;
+}
+
+.tape_ear__right {
+    right: -4px;
+    transform: rotate(180deg);
 }
 </style>
