@@ -20,3 +20,8 @@
     />
   </svg>
 </template>
+<style lang="scss" scoped>
+svg {
+  transform: rotate(180deg);
+}
+</style>

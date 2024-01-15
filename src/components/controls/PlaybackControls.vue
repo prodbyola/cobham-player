@@ -1,34 +1,64 @@
 <template>
   <div class="csp_controls">
-    <div 
-      v-for="(control, index) in controls" 
-      :key="index" 
+    <div
+      v-for="(control, index) in controls"
+      :key="index"
       class="csp_control"
       :class="{
         rightmost: index === controls.length - 1,
-        leftmost: index === 0
+        leftmost: index === 0,
+        record: control.name === 'record',
+        active: control.name === activeControl || playPressed(control.name)
       }"
+      @click="control.action"
+      @mousedown="activeControl = control.name"
+      @mouseup="deactivateControl"
     >
       <ControlIcon :name="control.name" />
     </div>
   </div>
 </template>
 <script lang="ts" setup>
+import { useAppState } from '@/stores/app'
 import ControlIcon from './ControlIcon.vue'
+import { computed, ref } from 'vue'
 
-const controls = [
-  { name: 'eject', action: () => {} },
-  { name: 'rewind', action: () => {} },
-  { name: 'forward', action: () => {} },
-  { name: 'stop', action: () => {} },
-  { name: 'play', action: () => {} }
-]
+const CONTROL_NAMES = ['eject', 'record', 'rewind', 'forward', 'stop', 'pause', 'play'] as const
+type ControlName = typeof CONTROL_NAMES[number]
+
+const appState = useAppState()
+const activeControl = ref<ControlName | null>(null)
+const playPressed = computed(() => (control: ControlName) => {
+  return ['play', 'pause'].includes(control as string) && appState.isPlaying
+})
+const deactivateControl = () => {
+  const excluded = ['play', 'pause', 'record'].includes(activeControl.value as string)
+
+  if(!excluded){
+    activeControl.value = null
+  }
+}
+
+const controls = computed<{
+    name: ControlName;
+    action: () => void;
+}[]>(() => {
+  return [
+    { name: 'eject', action: () => {} },
+    { name: 'record', action: () => {} },
+    { name: 'rewind', action: () => {} },
+    { name: 'forward', action: () => {} },
+    { name: 'stop', action: appState.stop },
+    { name: appState.isPlaying ? 'pause' : 'play', action: appState.playPause }
+  ]
+})
 </script>
 <style lang="scss" scoped>
 $end_curve: 30px;
 
 .csp_controls {
   width: 100%;
+  height: 82px;
   display: flex;
   justify-content: center;
   column-gap: 2px;
@@ -39,15 +69,14 @@ $end_curve: 30px;
     align-items: center;
     justify-content: center;
     background: white;
-    box-shadow: 0px 5px 6px rgba(29, 80, 65, 0.50);
+    box-shadow: 0px 5px 6px rgba(29, 80, 65, 0.5);
     padding: 4px 8px;
     cursor: pointer;
-    transition: all .3s;
+    transition: all 0.3s;
   }
 
   .csp_control:hover {
     transform: scale(105%);
-    // border-right: 1px solid black;
   }
 
   .csp_control.rightmost {
@@ -57,6 +86,14 @@ $end_curve: 30px;
   .csp_control.leftmost {
     border: none;
     border-radius: $end_curve 0 0 $end_curve;
+  }
+
+  .csp_control.active {
+    transform: translateY(6px);
+  }
+
+  .csp_control.record {
+    background-color: #dd2828;
   }
 }
 </style>
