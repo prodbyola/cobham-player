@@ -26,6 +26,18 @@ onMounted(() => {
     const mediaSource = audioContext.createMediaElementSource(controller as HTMLAudioElement)
     mediaSource.connect(audioContext.destination)
 
+    controller.addEventListener('timeupdate', (e) => {
+      const t = e.currentTarget as HTMLAudioElement
+      
+      let progress = (t.currentTime / t.duration) * 100
+      progress = Math.round(progress)
+      appState.playbackProgress = progress
+    })
+
+    controller.addEventListener('ended', () => {
+      appState.stop()
+    })
+
     appState.audioContext = audioContext
     appState.mediaController = controller as HTMLAudioElement
   } else {

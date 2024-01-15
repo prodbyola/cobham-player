@@ -1,9 +1,9 @@
 <template>
   <div class="csp_plaster csp_reels">
-    <div class="csp__reel" :class="{csp_rolling: isPlaying}">
+    <div class="csp__reel csp_reel__right">
       <ReelIcon />
     </div>
-    <div class="csp__reel reel__rolled" :class="{csp_rolling: isPlaying}">
+    <div class="csp__reel csp_reel__left">
       <ReelIcon />
     </div>
   </div>
@@ -18,10 +18,31 @@
 <script lang="ts" setup>
 import { useAppState } from '@/stores/app';
 import ReelIcon from './ReelIcon.vue'
-import { computed } from 'vue';
+import { computed, ref, watchEffect } from 'vue';
 
 const appState = useAppState()
 const isPlaying = computed(() => appState.isPlaying)
+
+const reelRotation = ref(0)
+const rotateReel = () => {
+  if(reelRotation.value < 360){
+    reelRotation.value += 1
+  } else {
+    reelRotation.value = 0
+  }
+}
+
+const reelProgress = computed(() => appState.reelProgress)
+
+const interval = ref<undefined | number>(undefined)
+
+watchEffect(() => {
+  if(isPlaying.value){
+    interval.value = setInterval(rotateReel, 20)
+  } else {
+    clearInterval(interval.value)
+  }
+})
 </script>
 <style lang="scss" scoped>
 .csp_plaster {
@@ -44,6 +65,7 @@ const isPlaying = computed(() => appState.isPlaying)
     border-radius: 50%;
     display: inline-block;
     background-color: transparent;
+    transform: rotate(v-bind('reelRotation+"deg"'));
 
     img {
       width: 100%;
@@ -52,8 +74,12 @@ const isPlaying = computed(() => appState.isPlaying)
     }
   }
 
-  .reel__rolled {
-    outline: solid #232323 60px;
+  .csp_reel__left {
+    outline: solid #232323 v-bind('60-reelProgress+"px"');
+  }
+
+  .csp_reel__right {
+    outline: solid #232323 v-bind('reelProgress+"px"');
   }
 }
 

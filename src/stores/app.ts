@@ -6,6 +6,12 @@ export const useAppState = defineStore('appState', () => {
   const mediaController = ref<HTMLAudioElement | null>(null)
   const playbackState = ref<'playing' | 'paused' | 'stopped'>('stopped')
   const isPlaying = computed(() => playbackState.value === 'playing')
+  
+  const playbackProgress = ref(0)
+  const reelProgress = computed(() => {
+    const rp = (playbackProgress.value / 100) * 60
+    return Math.round(rp)
+  })
 
   function playPause(){
     if(audioContext.value?.state === 'suspended'){
@@ -37,5 +43,7 @@ export const useAppState = defineStore('appState', () => {
     playPause,
     stop,
     isPlaying,
+    playbackProgress,
+    reelProgress
    }
 })
