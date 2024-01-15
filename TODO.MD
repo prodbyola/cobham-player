@@ -1,2 +1,1 @@
-- Add ears
-- Add substraction holes at base.
+- Add inner shadow to tape holes
