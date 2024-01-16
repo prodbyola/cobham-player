@@ -110,7 +110,7 @@ body {
 
 @media only screen and (max-width: 767px) {
   .hide_mobile {
-    display: none;
+    display: none !important;
   }
 }
 
