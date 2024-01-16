@@ -3,7 +3,7 @@
     <div class="csp_modal__content">
       <div class="csp_modal__header">
         <h3 class="header_title">{{ title }}</h3>
-        <div class="close_icon" @click="appState.appModal = null">
+        <div v-if="!hideClose" class="close_icon" @click="appState.appModal = null">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="24px"
@@ -23,11 +23,13 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { useAppState } from '@/stores/app';
+import { useAppState } from '@/stores/app'
 
 const appState = useAppState()
 defineProps<{
   title?: string
+  hideClose?: boolean
+  fullscreen?: boolean
 }>()
 </script>
 <style lang="scss" scoped>
@@ -44,9 +46,13 @@ defineProps<{
   align-items: center;
 
   .csp_modal__content {
-    border-radius: 8px;
-    width: 100%;
+    border-radius: v-bind('fullscreen ? "0" : "8px"');
+    width: v-bind('fullscreen ? "100vw" : "100%"');
+    height: v-bind('fullscreen ? "100vh" : "auto"');
     padding: 8px;
+    background-color: white;
+    max-width: v-bind('fullscreen ? "none" : "520px"');
+ 
     .csp_modal__header {
       display: inline-flex;
       align-items: center;
@@ -67,9 +73,6 @@ defineProps<{
         cursor: pointer;
       }
     }
-
-    background-color: white;
-    max-width: 520px;
   }
 }
 </style>

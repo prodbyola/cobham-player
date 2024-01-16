@@ -43,13 +43,5 @@ import AppModal from './AppModal.vue'
     color: rgba(0, 0, 0, 0.627);
     font-weight: bold;
   }
-  a,
-  .csp_strong {
-    font-weight: bold;
-  }
-
-  p {
-    margin-bottom: 8px;
-  }
 }
 </style>

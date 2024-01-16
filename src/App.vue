@@ -1,13 +1,14 @@
 <template>
-  <AppHeader />
+  <AppHeader class="hide_mobile" />
   <main class="cs-player-page">
     <Cassette />
-    <PlaybackControls />
-    <AppInfo v-if="showAppInfo" />
+    <PlaybackControls class="hide_mobile" />
     <audio :id="controllerID">
-      <source src="/audios/demo_audio.mp3" type="audio/mpeg">
+      <source src="/audios/demo_audio.mp3" type="audio/mpeg" />
     </audio>
   </main>
+  <AppInfoModal v-if="showAppInfo" />
+  <OrientWarningModal />
 </template>
 
 <script setup lang="ts">
@@ -17,7 +18,8 @@ import { useAppState } from './stores/app'
 import AppHeader from './components/AppHeader.vue'
 import Cassette from './components/cassette/CassetteIndex.vue'
 import PlaybackControls from './components/controls/PlaybackControls.vue'
-import AppInfo from './components/modals/AppInfo.vue'
+import AppInfoModal from './components/modals/AppInfo.vue'
+import OrientWarningModal from './components/modals/OrientWarning.vue'
 
 const controllerID = 'audio-controller'
 const appState = useAppState()
@@ -33,7 +35,7 @@ onMounted(() => {
 
     controller.addEventListener('timeupdate', (e) => {
       const t = e.currentTarget as HTMLAudioElement
-      
+
       let progress = (t.currentTime / t.duration) * 100
       progress = Math.round(progress)
       appState.playbackProgress = progress
@@ -58,11 +60,22 @@ onMounted(() => {
 @import 'font/ds/stylesheet.css';
 
 body {
-  p {
-    font-family: SF Pro Display;
+  a,
+  .csp_strong {
+    font-weight: bold;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  p {
+    font-family: SF Pro Display;
+    margin-bottom: 8px;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: SF Compact Display;
   }
 }
@@ -76,6 +89,7 @@ body {
 }
 
 .cs-player-page {
+  overflow-x: hidden;
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -94,26 +108,10 @@ body {
   padding: 0;
 }
 
-@-webkit-keyframes spin {
-  0% {
-    -webkit-transform: rotate(0deg);
-  }
-  100% {
-    -webkit-transform: rotate(360deg);
+@media only screen and (max-width: 767px) {
+  .hide_mobile {
+    display: none;
   }
 }
 
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-.csp_rolling {
-  -webkit-animation: spin 2s linear infinite;
-  animation: spin 2s linear infinite;
-}
 </style>
