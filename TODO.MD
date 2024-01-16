@@ -1,1 +1,2 @@
-- Add inner shadow to tape holes
+- Recording
+- Implement audio effects

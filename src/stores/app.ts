@@ -15,7 +15,10 @@ export const useAppState = defineStore('appState', () => {
 
   const playbackProgress = ref(0)
   const reelProgress = computed(() => {
-    const rp = (playbackProgress.value / 100) * 60
+    let p = playbackProgress.value
+
+    if(Number.isNaN(p)) p = 0
+    const rp = (p / 100) * 60
     return Math.round(rp)
   })
 
@@ -87,6 +90,17 @@ export const useAppState = defineStore('appState', () => {
     }
   }
 
+  function changeMediaSrc(src: string){
+    const c = mediaController.value
+    
+    if(c !== null){
+      stop()
+
+      c.src = src
+      c.load()
+    }
+  }
+
   return {
     mediaController,
     audioContext,
@@ -101,6 +115,7 @@ export const useAppState = defineStore('appState', () => {
     stop,
     forward,
     restoreSpeed,
-    rewind
+    rewind,
+    changeMediaSrc
   }
 })

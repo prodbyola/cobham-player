@@ -43,7 +43,6 @@ $social_size: 32px;
   height: 48px;
   width: 100%;
   background-color: white;
-  top: 0;
   display: flex;
   align-items: center;
   justify-content: center;

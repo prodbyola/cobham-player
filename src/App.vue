@@ -87,6 +87,7 @@ body {
 
 #app {
   @extend .csp_page_bg;
+  display: block;
   min-width: 100vw;
   max-width: none;
   min-height: 100vh;

@@ -16,17 +16,20 @@
     >
       <ControlIcon :name="control.name" />
     </div>
+    <input ref="fileInput" type="file" accept="audio/mpeg" hidden />
   </div>
 </template>
 <script lang="ts" setup>
 import { useAppState } from '@/stores/app'
 import ControlIcon from './ControlIcon.vue'
-import { computed, ref } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 
 const CONTROL_NAMES = ['eject', 'record', 'rewind', 'forward', 'stop', 'pause', 'play'] as const
 type ControlName = (typeof CONTROL_NAMES)[number]
 
 const appState = useAppState()
+const fileInput = ref<HTMLInputElement>()
+
 const activeControl = ref<ControlName | null>(null)
 const playPressed = computed(() => (control: ControlName) => {
   return ['play', 'pause'].includes(control as string) && appState.isPlaying && !appState.speedyMode
@@ -55,6 +58,13 @@ const onReleaseControl = () => {
   }
 }
 
+const pickFile = () => {
+  // const input = document.getElementById('audio-input') as HTMLInputElement
+  fileInput.value?.click()
+
+  // input
+}
+
 const controls = computed<
   {
     name: ControlName
@@ -62,13 +72,25 @@ const controls = computed<
   }[]
 >(() => {
   return [
-    { name: 'eject', action: () => {} },
+    { name: 'eject', action: pickFile },
     { name: 'record', action: () => {} },
     { name: 'rewind', action: () => {} },
     { name: 'forward', action: () => {} },
     { name: 'stop', action: appState.stop },
     { name: appState.isPlaying ? 'pause' : 'play', action: appState.playPause }
   ]
+})
+
+onMounted(() => {
+  const fi = fileInput.value
+  fi?.addEventListener('change', () => {
+    const files = fi.files
+    if(files !== null){
+      const src = URL.createObjectURL(files[0])
+      appState.changeMediaSrc(src)
+    }
+  })
+
 })
 </script>
 <style lang="scss" scoped>
