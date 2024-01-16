@@ -28,7 +28,7 @@ import TapeEar from './TapeEar.vue';
 }
 
 .tc_horizontal {
-    height: 128px;
+    height: 131px;
     width: 100%;
     left: 0;
     border-radius: 20px
