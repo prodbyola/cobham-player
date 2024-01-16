@@ -3,6 +3,7 @@
     <AppHeader />
     <Cassette />
     <PlaybackControls />
+    <AppInfo />
     <audio :id="controllerID">
       <source src="/audios/demo_audio.mp3" type="audio/mpeg">
     </audio>
@@ -11,10 +12,12 @@
 
 <script setup lang="ts">
 import { onMounted } from 'vue'
+import { useAppState } from './stores/app'
+
 import AppHeader from './components/AppHeader.vue'
 import Cassette from './components/cassette/CassetteIndex.vue'
 import PlaybackControls from './components/controls/PlaybackControls.vue'
-import { useAppState } from './stores/app'
+import AppInfo from './components/modals/AppInfo.vue'
 
 const controllerID = 'audio-controller'
 const appState = useAppState()
@@ -51,6 +54,16 @@ onMounted(() => {
 @import url('https://fonts.cdnfonts.com/css/sf-compact-display');
 @import url('https://fonts.cdnfonts.com/css/arial');
 @import 'font/ds/stylesheet.css';
+
+body {
+  p {
+    font-family: SF Pro Display;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: SF Compact Display;
+  }
+}
 
 #audio-controller {
   display: none;

@@ -1,52 +1,16 @@
-# cs-player
+# Cobhams Player
 
-This template should help get you started developing with Vue 3 in Vite.
+## Description
+Cobhams Player is a retro-style cassette player created just for the fun of it, dedicated to the reowned Performing Artist, Singer-Songwriter and Music Producer, [Cobhams Asuquo](https://twitter.com/cobhamsasuquo). The app is built with [VueJS](https://vuejs.org/guide/introduction.html), an approachable, performant and versatile framework for building web user interfaces.
 
-## Recommended IDE Setup
+## Installation
+- Clone project `https://github.com/prodbyola/cobham-player`.
+- `cd cobham-player`.
+- Install dependencies: `npm install` or `yarn install`.
+- Start development `npm run dev` or `yarn dev`. Then visit: http://localhost:5173/
+- To build and deploy: `npm run build` or `yarn build`.
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+## Contributing
+All contributions are welcomed! You can find source code here on GitHub. This project is at its earliest stage, so you might experience some bugs. Feedbacks are highly appreciated. You can open an issue or let's have a chat: prodbyola@gmail.com. Whatever you think can be done to improve the project, kindly let me know. Don't forget, I'm also open to work and collaborations.
 
-## Type Support for `.vue` Imports in TS
-
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
-
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
-
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Run Unit Tests with [Vitest](https://vitest.dev/)
-
-```sh
-npm run test:unit
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+A very Big Thanks to [Yury Zeliankousk](https://www.figma.com/@tank666) for the original [Figma template](https://www.figma.com/community/file/935937278123360532).

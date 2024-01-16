@@ -22,7 +22,6 @@ import { computed, ref, watchEffect } from 'vue';
 
 const appState = useAppState()
 const isPlaying = computed(() => appState.isPlaying)
-// const speedyType = computed(() => appState.speedyType)
 
 const reelRotation = ref(0)
 const rotateReel = () => {
