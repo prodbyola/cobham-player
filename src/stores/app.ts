@@ -2,6 +2,7 @@ import { computed, ref } from 'vue'
 import { defineStore } from 'pinia'
 
 export const useAppState = defineStore('appState', () => {
+  const appModal = ref<'info' | 'orientation_warning' | null>(null)
   const audioContext = ref<AudioContext | null>(null)
   const mediaController = ref<HTMLAudioElement | null>(null)
 
@@ -95,6 +96,7 @@ export const useAppState = defineStore('appState', () => {
     playbackProgress,
     playbackState,
     reelProgress,
+    appModal,
     playPause,
     stop,
     forward,

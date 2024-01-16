@@ -31,6 +31,7 @@ import AppModal from './AppModal.vue'
 </script>
 <style lang="scss" scoped>
 .csp_info {
+  margin: 18px 8px;
   a,
   .csp_strong {
     font-weight: bold;

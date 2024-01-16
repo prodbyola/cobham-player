@@ -1,9 +1,9 @@
 <template>
+  <AppHeader />
   <main class="cs-player-page">
-    <AppHeader />
     <Cassette />
     <PlaybackControls />
-    <AppInfo />
+    <AppInfo v-if="showAppInfo" />
     <audio :id="controllerID">
       <source src="/audios/demo_audio.mp3" type="audio/mpeg">
     </audio>
@@ -11,7 +11,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted } from 'vue'
+import { computed, onMounted } from 'vue'
 import { useAppState } from './stores/app'
 
 import AppHeader from './components/AppHeader.vue'
@@ -21,6 +21,8 @@ import AppInfo from './components/modals/AppInfo.vue'
 
 const controllerID = 'audio-controller'
 const appState = useAppState()
+
+const showAppInfo = computed(() => appState.appModal === 'info')
 
 onMounted(() => {
   const audioContext = new window.AudioContext()
