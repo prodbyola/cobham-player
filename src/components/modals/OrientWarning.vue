@@ -18,8 +18,7 @@
       </div>
       <h1 class="cow_heading">Hey, looks like you're on mobile device!</h1>
       <p class="cow_text">
-        Or it could be that your screen view is too narrow. <span class="csp_strong">Cobhams</span> is claustrophobic &#128515;. Please
-        change your device orientation to "Landscape" view or kindly widen your screen.
+        Or it could be that your screen view is too narrow. <span class="csp_strong">Cobhams</span> is claustrophobic &#128515;. Please switch to a Desktop or Pad to enjoy the time.
       </p>
     </div>
   </AppModal>
@@ -33,7 +32,7 @@ $icon_size: 84px;
   display: none;
 }
 
-@media only screen and (max-width: 767px) and (orientation: portrait) {
+@media only screen and (max-width: 767px) {
   .csp_ow {
     display: block;
     .csp_ow__content {
@@ -66,29 +65,29 @@ $icon_size: 84px;
   }
 }
 
-$turn_size: 90deg;
+// $turn_size: 90deg;
 
-@-webkit-keyframes turn {
-  0% {
-    -webkit-transform: rotate(0deg);
-  }
-  80% {
-    -webkit-transform: rotate($turn_size);
-  }
-  100% {
-    -webkit-transform: rotate($turn_size);
-  }
-}
+// @-webkit-keyframes turn {
+//   0% {
+//     -webkit-transform: rotate(0deg);
+//   }
+//   80% {
+//     -webkit-transform: rotate($turn_size);
+//   }
+//   100% {
+//     -webkit-transform: rotate($turn_size);
+//   }
+// }
 
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  80% {
-    -webkit-transform: rotate($turn_size);
-  }
-  100% {
-    transform: rotate($turn_size);
-  }
-}
+// @keyframes spin {
+//   0% {
+//     transform: rotate(0deg);
+//   }
+//   80% {
+//     -webkit-transform: rotate($turn_size);
+//   }
+//   100% {
+//     transform: rotate($turn_size);
+//   }
+// }
 </style>

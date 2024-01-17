@@ -59,6 +59,8 @@ onMounted(() => {
 @import url('https://fonts.cdnfonts.com/css/arial');
 @import 'font/ds/stylesheet.css';
 
+$font_color: rgba(0, 0, 0, 0.805);
+
 body {
   a,
   .csp_strong {
@@ -68,6 +70,7 @@ body {
   p {
     font-family: SF Pro Display;
     margin-bottom: 8px;
+    color: $font_color;
   }
 
   h1,
@@ -77,6 +80,7 @@ body {
   h5,
   h6 {
     font-family: SF Compact Display;
+    color: $font_color;
   }
 }
 
