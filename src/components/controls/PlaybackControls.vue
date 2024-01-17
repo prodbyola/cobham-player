@@ -13,6 +13,8 @@
       @click="control.action"
       @mousedown="() => onHoldControl(control.name)"
       @mouseup="onReleaseControl"
+      @touchstart="() => onTouchControl(control.name)"
+      @touchend="onTouchRelease"
     >
       <ControlIcon :name="control.name" />
     </div>
@@ -58,8 +60,20 @@ const onReleaseControl = () => {
   }
 }
 
+const onTouchControl = (cn: ControlName) => {
+  if(cn === 'forward' || cn === 'rewind'){
+    onHoldControl(cn)
+  }
+}
+
+const onTouchRelease = () => {
+  const speedy = ['forward', 'rewind'].includes(activeControl.value as string)
+  if(speedy){
+    onReleaseControl()
+  }
+}
+
 const pickFile = () => {
-  // const input = document.getElementById('audio-input') as HTMLInputElement
   fileInput.value?.click()
 
   // input

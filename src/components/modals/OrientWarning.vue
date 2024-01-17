@@ -18,7 +18,9 @@
       </div>
       <h1 class="cow_heading">Hey, looks like you're on mobile device!</h1>
       <p class="cow_text">
-        Or it could be that your screen view is too narrow. <span class="csp_strong">Cobhams</span> is claustrophobic &#128515;. Please switch to a Desktop or Pad to enjoy the time.
+        Or it could be that your screen view is too narrow.
+        <span class="csp_strong">Cobhams</span> is claustrophobic &#128515;. Please switch to a
+        Desktop or Pad to enjoy the time.
       </p>
     </div>
   </AppModal>
