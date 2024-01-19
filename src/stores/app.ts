@@ -14,14 +14,25 @@ export const useAppState = defineStore('appState', () => {
   const isPlaying = computed(() => playbackState.value === 'playing')
 
   const playbackProgress = ref(0)
+
+  /** 
+   * Calculates the amount of tape around the reels. A full reel has 60px border-width,
+   * so we derive this value from `playbackProgress`.
+   * 
+   * Sometimes, `playbackProgress` is `NaN`. This usually happens when we change `src` for `mediaController`
+   * and in such case `reelProgress` returns `NaN` as well. In order to avoid this, we must check and return 0 if `playbackControl` is `NaN`.
+   */
   const reelProgress = computed(() => {
     let p = playbackProgress.value
 
-    if(Number.isNaN(p)) p = 0
+    if (Number.isNaN(p)) p = 0
     const rp = (p / 100) * 60
     return Math.round(rp)
   })
 
+  /**
+   * Plays the audio if `playbackState` is `paused`. Otherwise, pauses the audio.
+   */
   function playPause() {
     if (audioContext.value?.state === 'suspended') {
       audioContext.value.resume()
@@ -37,6 +48,9 @@ export const useAppState = defineStore('appState', () => {
     }
   }
 
+  /**
+   * Stops playback.
+   */
   function stop() {
     const c = mediaController.value
     if (c !== null) {
@@ -46,6 +60,9 @@ export const useAppState = defineStore('appState', () => {
     }
   }
 
+  /**
+   * Fast-forward playback.
+   */
   function forward() {
     speedyType.value = 'forward'
     const c = mediaController.value
@@ -54,6 +71,7 @@ export const useAppState = defineStore('appState', () => {
     c?.play()
   }
 
+  /** Rewinds playback. */
   function rewind() {
     speedyType.value = 'rewind'
     const c = mediaController.value
@@ -62,6 +80,7 @@ export const useAppState = defineStore('appState', () => {
     c?.play()
   }
 
+  /** Restores playback speed to normal. */
   function restoreSpeed() {
     clearInterval(speedInterval.value)
     speedyType.value = null
@@ -71,29 +90,31 @@ export const useAppState = defineStore('appState', () => {
 
     if (c) {
       if (!playing) c.pause()
-      if(c.muted) c.muted = false
+      if (c.muted) c.muted = false
     }
   }
 
+  /** Increases the playback speed depending on whether the command is rewind or fast-forward. */
   function updateSpeedRate(c: HTMLAudioElement | null) {
     const playing = isPlaying.value
     const st = speedyType.value
     const tc = 0.3
 
-    if(c){
-      if(!playing) c.muted = true
+    if (c) {
+      if (!playing) c.muted = true
 
       speedInterval.value = setInterval(() => {
-        if(st === 'rewind') c.currentTime -= tc
+        if (st === 'rewind') c.currentTime -= tc
         else c.currentTime += tc
       }, 100) as unknown as number
     }
   }
 
-  function changeMediaSrc(src: string){
+  /** Changes the `mediaController`'s source file. */
+  function changeMediaSrc(src: string) {
     const c = mediaController.value
-    
-    if(c !== null){
+
+    if (c !== null) {
       stop()
 
       c.src = src

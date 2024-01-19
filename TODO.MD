@@ -1,2 +1,4 @@
 - Recording
+- Export recording
 - Implement audio effects
+- Create playlistß

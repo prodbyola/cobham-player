@@ -40,7 +40,7 @@ const playPressed = computed(() => (control: ControlName) => {
 const onHoldControl = (controlName: ControlName) => {
   if (controlName === 'forward') {
     appState.forward()
-  } else if(controlName === 'rewind'){
+  } else if (controlName === 'rewind') {
     appState.rewind()
   }
 
@@ -61,22 +61,20 @@ const onReleaseControl = () => {
 }
 
 const onTouchControl = (cn: ControlName) => {
-  if(cn === 'forward' || cn === 'rewind'){
+  if (cn === 'forward' || cn === 'rewind') {
     onHoldControl(cn)
   }
 }
 
 const onTouchRelease = () => {
   const speedy = ['forward', 'rewind'].includes(activeControl.value as string)
-  if(speedy){
+  if (speedy) {
     onReleaseControl()
   }
 }
 
 const pickFile = () => {
   fileInput.value?.click()
-
-  // input
 }
 
 const controls = computed<
@@ -99,12 +97,11 @@ onMounted(() => {
   const fi = fileInput.value
   fi?.addEventListener('change', () => {
     const files = fi.files
-    if(files !== null){
+    if (files !== null) {
       const src = URL.createObjectURL(files[0])
       appState.changeMediaSrc(src)
     }
   })
-
 })
 </script>
 <style lang="scss" scoped>
