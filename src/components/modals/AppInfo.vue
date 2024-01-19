@@ -25,8 +25,9 @@
         original <a href="https://www.figma.com/community/file/935937278123360532">Figma template</a>.
       </p>
       <p>
-        Favicon: <a href="https://www.freepik.com/free-vector/cinema-film-production-realistic-transparent-composition-with-isolated-image-circle-bobbin-with-reel-vector-illustration_23130020.htm#query=reel&position=3&from_view=search&track=sph&uuid=ec86461c-d4dd-4322-a77d-606cf3ae3a53">Image by macrovector</a> on Freepik
+        Favicon: <a href="https://www.freepik.com/free-vector/cinema-film-production-realistic-transparent-composition-with-isolated-image-circle-bobbin-with-reel-vector-illustration_23130020.htm#query=reel&position=3&from_view=search&track=sph&uuid=ec86461c-d4dd-4322-a77d-606cf3ae3a53">Image by macrovector</a> on Freepik.
       </p>
+      <p>The default song is <a href="https://music.apple.com/ng/song/do-the-right-thing-feat-bez/980789980">Do the Right Thing by Cobhams (feat. Bez)</a>.</p>
     </div>
   </AppModal>
 </template>

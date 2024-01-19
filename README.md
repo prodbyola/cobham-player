@@ -14,3 +14,5 @@ Cobhams Player is a retro-style cassette player created just for the fun of it, 
 All contributions are welcomed! You can find source code here on GitHub. This project is at its earliest stage, so you might experience some bugs. Feedbacks are highly appreciated. You can open an issue or let's have a chat: prodbyola@gmail.com. Whatever you think can be done to improve the project, kindly let me know. Don't forget, I'm also open to work and collaborations.
 
 A very Big Thanks to [Yury Zeliankousk](https://www.figma.com/@tank666) for the original [Figma template](https://www.figma.com/community/file/935937278123360532).
+
+The default song is [Do the Right Thing by Cobhams ft Bez](https://music.apple.com/ng/song/do-the-right-thing-feat-bez/980789980).
