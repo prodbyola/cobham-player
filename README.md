@@ -1,7 +1,11 @@
 # Cobhams Player
 
 ## Description
-Cobhams Player is a retro-style cassette player created just for the fun of it, dedicated to the reowned Performing Artist, Singer-Songwriter and Music Producer, [Cobhams Asuquo](https://twitter.com/cobhamsasuquo). The app is built with [VueJS](https://vuejs.org/guide/introduction.html), an approachable, performant and versatile framework for building web user interfaces.
+[Cobhams Player](http://cobhams.netlify.app) is a retro-style cassette player created just for the fun of it, dedicated to the reowned Performing Artist, Singer-Songwriter and Music Producer, [Cobhams Asuquo](https://twitter.com/cobhamsasuquo). The app is built with [VueJS](https://vuejs.org/guide/introduction.html), an approachable, performant and versatile framework for building web user interfaces.
+
+Video Demo: https://youtu.be/sIIO-7uKFNs
+
+Live Demo: http://cobhams.netlify.app
 
 ## Installation
 - Clone project `https://github.com/prodbyola/cobham-player`.
