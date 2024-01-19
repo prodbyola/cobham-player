@@ -1,7 +1,7 @@
 <template>
   <AppModal title="App Info">
     <div class="csp_info">
-      <h4 class="open_text">Time to Back in Time &#128337; &#128515;!</h4>
+      <h4 class="open_text">Time to Go Back in Time &#128337; &#128515;!</h4>
       <p>
         <span class="csp_strong">Cobhams Player</span> is a retro-style cassette player created just
         for the fun of it, dedicated to the reowned Performing Artist, Singer-Songwriter and Music
