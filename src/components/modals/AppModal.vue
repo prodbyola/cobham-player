@@ -46,6 +46,8 @@ defineProps<{
   align-items: center;
 
   .csp_modal__content {
+    display: flex;
+    flex-direction: column;
     border-radius: v-bind('fullscreen ? "0" : "8px"');
     width: v-bind('fullscreen ? "100vw" : "100%"');
     height: v-bind('fullscreen ? "100vh" : "auto"');
