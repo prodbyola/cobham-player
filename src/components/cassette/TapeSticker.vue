@@ -23,7 +23,7 @@
     .csp__sticker_whitetape {
         p {
             color: #100F0F;
-            font: SF Pro Display;
+            font-family: SF Pro Display;
         }
 
         display: flex;
@@ -41,10 +41,12 @@
             align-items: center;
 
             .sidea__text {
-                font-family: Arial, Helvetica, sans-serif;
+                font-family: 'Neue Helvetica BQ', sans-serif;
+                // font-family: Arial, Helvetica, sans-serif;
                 color: white;
                 font-weight: 700;
                 font-size: 1.33331rem;
+                margin-bottom: 0;
             }
         }
 

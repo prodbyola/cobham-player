@@ -57,6 +57,8 @@ onMounted(() => {
 @import url('https://fonts.cdnfonts.com/css/sf-pro-display');
 @import url('https://fonts.cdnfonts.com/css/sf-compact-display');
 @import url('https://fonts.cdnfonts.com/css/arial');
+@import url('https://fonts.cdnfonts.com/css/neue-helvetica-bq');
+
 @import 'font/ds/stylesheet.css';
 
 $font_color: rgba(0, 0, 0, 0.805);
