@@ -97,7 +97,7 @@ body {
 .cs-player-page {
   overflow-x: hidden;
   width: 100vw;
-  height: 100vh;
+  height: calc(100vh - var(--header-height));
   display: flex;
   justify-content: center;
   align-items: center;
