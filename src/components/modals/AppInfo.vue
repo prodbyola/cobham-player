@@ -16,8 +16,7 @@
         its earliest stage, so you might experience some bugs. Feedbacks are highly appreciated. You
         can <a href="https://github.com/prodbyola/cobham-player/issues">open an issue</a> or let's
         have a chat: <a href="mailto:prodbyola@gmail.com">prodbyola@gmail.com</a>. Whatever you
-        think can be done to improve the project, kindly let me know. Don't forget, I'm also open to
-        work and collaborations.
+        think can be done to improve the project, kindly let me know.
       </p>
       <p>
         A very Big Thanks to
