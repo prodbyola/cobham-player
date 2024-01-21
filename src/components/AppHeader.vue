@@ -40,7 +40,7 @@ $social_size: 32px;
 
 .csp_header {
   // position: absolute;
-  height: 48px;
+  height: var(--header-height);
   width: 100%;
   background-color: white;
   display: flex;
