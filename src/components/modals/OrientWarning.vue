@@ -42,7 +42,7 @@ $icon_size: 84px;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 100%;
+      flex-grow: 2;
       padding: 0 12px;
 
       .cow_icon {
@@ -61,6 +61,7 @@ $icon_size: 84px;
       }
 
       .cow_text {
+        text-align: center;
         font-size: 1.2rem;
       }
     }
